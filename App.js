@@ -7,18 +7,18 @@ import { NavigationContainer, StackActions } from '@react-navigation/native';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="SecondScreen" component={SecondScreen} />
+//    <NavigationContainer>
+//      <Stack.Navigator initialRouteName="Home">
+//        <Stack.Screen name="Home" component={HomeScreen} />
+//        <Stack.Screen name="SecondScreen" component={SecondScreen} />
       <View style={styles.container}>
         {TestFunc()}
         <StatusBar style="auto" />
         {ForLoops()}
         {FatList()}
       </View>
-      </Stack.Navigator>
-    </NavigationContainer>
+//      </Stack.Navigator>
+//    </NavigationContainer>
   );
 }
 

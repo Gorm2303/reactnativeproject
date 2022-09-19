@@ -1,4 +1,5 @@
 import { SafeAreaView, FlatList, View, Text} from "react-native";
+import { useEffect, useState } from "react";
 
 const DATA = [
     {   id: "1",
@@ -16,6 +17,18 @@ const Item = ({title}) => (
 );
 
 const App = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetchMovies();
+    }, []);
+
+    function fetchMovies() {
+        fetch('https://jsonplaceholder.typicode.com/todos')
+        .then((response) => response.json())
+        .then((data) => setData(data));
+    }
+    console.log(data);
 
     const renderItem = ({item}) => (
         <Item title = {item.title}/>
@@ -24,7 +37,7 @@ const App = () => {
   return (
     <SafeAreaView>
       <FlatList
-      data={DATA}
+      data={data}
       renderItem={renderItem}
       keyExtractor={item => item.id}
       />

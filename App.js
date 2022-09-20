@@ -13,7 +13,7 @@ function HomeScreen ( {navigation} ) {
       <StatusBar style="auto" />
       <Button title="Go to Second Screen" onPress={() => navigation.navigate('SecondScreen')}/>
       <Text>Hello at the first screen</Text>
-      {FatList}
+      {FatList()}
     </View>
   );
 }
@@ -42,10 +42,8 @@ function App() {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 

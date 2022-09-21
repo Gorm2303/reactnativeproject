@@ -1,19 +1,7 @@
-import { StyleSheet, SafeAreaView, FlatList, View, Text, Image} from "react-native";
+import { StyleSheet, SafeAreaView, FlatList, Text, Image, TouchableOpacity} from "react-native";
 import React, { useEffect, useState } from "react";
 
-const App = () => {
-    const Item = ({title,vote_average,vote_count,release_date, poster_path, overview}) => (
-        <View style={styles.movieView}>
-            <Text style={styles.title}>{title}</Text>
-            <Text>{vote_average}</Text>
-            <Text>{vote_count}</Text>
-            <Text>{release_date}</Text>
-            <Text>{poster_path}</Text>
-            <Image source={{uri: {poster_path}}}/>
-            <Text>{overview}</Text>
-        </View>
-    );
-
+function App ( {navigation} ) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -26,37 +14,35 @@ const App = () => {
         .then((data) => setData(data.results));
     }
 
-    const renderItem = ({item}) => (
-        <View>
-            <Item title = {item.title} 
-            vote_average={"Vote \t" + item.vote_average} 
-            vote_count={"Vote count \t " + item.vote_count} 
-            release_date={"Release date: \t" + item.release_date}
-            poster_path={"https://image.tmdb.org/t/p/w500" + item.poster_path}
-            overview={"Overview: \n" + item.overview}
-            />
-        </View>
-    );
-
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <FlatList
       data={data}
-      renderItem={renderItem}
-      keyExtractor={item => item.id}
+      renderItem={({item}) => 
+      <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+        <Image 
+        style={styles.image} 
+        source={{ uri: `https://image.tmdb.org/t/p/original${item.poster_path}`,}}
+        />
+        </TouchableOpacity>
+      }
+      keyExtractor={(item) => item.id}
       />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-    movieView: {
-      maxWidth: '800px',
-      backgroundColor: '#EEE',
-      padding: 20,
-      marginVertical: 8,
-      marginHorizontal: 16,
-    },
+  container: {
+    flex: 1,
+  },
+  image: {
+    flexDirection: 'row',
+    width: "135px",
+    height: "200px",
+    marginVertical: 8,
+    marginHorizontal: 4,
+  },
     title: {
         fontSize: 32,
       },

@@ -2,12 +2,12 @@ import { StyleSheet, View, Text } from "react-native-web";
 import FatList from './Flatlist'
 
 
-function TopRated ( {navigation} ) {
-
+function Category ( {navigation, route} ) {
+  const { category, title } = route.params;
     return (
         <View style={styles.mainContainer}>
-            <Text style={styles.title}>Top Rated Movies</Text>
-            {FatList(navigation)}
+            <Text style={styles.title}>{title}</Text>
+            {FatList({navigation, category})}
         </View>
     );
 }
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default TopRated;
+export default Category;

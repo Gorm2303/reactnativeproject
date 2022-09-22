@@ -2,7 +2,7 @@ import { StyleSheet, View, FlatList, Text, Image, TouchableOpacity} from "react-
 import React, { useEffect, useState } from "react";
 import { useNavigation } from '@react-navigation/native';
 
-function App ( {} ) {
+function App ( {category} ) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -10,7 +10,8 @@ function App ( {} ) {
     }, []);
 
     function fetchMovies() {
-        fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=0c2928a0d441bf2ce59630be504699c4&language=en-US&page=1')
+      console.log(category);
+        fetch(`https://api.themoviedb.org/3/movie/${category.cat}?api_key=0c2928a0d441bf2ce59630be504699c4&language=en-US&page=1`)
         .then((response) => response.json())
         .then((data) => setData(data.results));
     }

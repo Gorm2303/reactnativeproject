@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import FatList from './Flatlist';
 
 
 function HomeScreen ( {navigation} ) {
@@ -8,8 +7,8 @@ function HomeScreen ( {navigation} ) {
     return (
       <View style={styles.mainContainer}>
         <StatusBar style="auto" />
-        <Text style={styles.title}>Top Rated Movies</Text>
-        {FatList(navigation)}
+        <Text style={styles.link}
+        onPress={() => navigation.navigate("Top")}>Top Rated Movies</Text>
       </View>
     );
   }
@@ -19,6 +18,9 @@ function HomeScreen ( {navigation} ) {
       alignItems: 'center',
       backgroundColor: '#fff',
 
+    },
+    link: {
+      fontSize: 24,
     },
     title: {
       fontSize: 32,

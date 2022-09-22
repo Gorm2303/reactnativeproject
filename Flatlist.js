@@ -28,7 +28,7 @@ function App ( {} ) {
         />
         </TouchableOpacity>
       }
-      numColumns={5}
+      numColumns={3}
       keyExtractor={(item) => item.id}
       />
     </View>

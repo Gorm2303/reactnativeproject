@@ -1,7 +1,8 @@
-import { StyleSheet, SafeAreaView, FlatList, Text, Image, TouchableOpacity} from "react-native";
+import { StyleSheet, View, FlatList, Text, Image, TouchableOpacity} from "react-native";
 import React, { useEffect, useState } from "react";
+import { useNavigation } from '@react-navigation/native';
 
-function App ( {navigation} ) {
+function App ( {} ) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -13,35 +14,41 @@ function App ( {navigation} ) {
         .then((response) => response.json())
         .then((data) => setData(data.results));
     }
+    const navigation = useNavigation();
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <FlatList
       data={data}
       renderItem={({item}) => 
-      <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Details")} style={styles.imgContainer}>
         <Image 
         style={styles.image} 
         source={{ uri: `https://image.tmdb.org/t/p/original${item.poster_path}`,}}
         />
         </TouchableOpacity>
       }
+      numColumns={5}
       keyExtractor={(item) => item.id}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
+    
+  },
+  imgContainer: {
   },
   image: {
-    flexDirection: 'row',
-    width: "135px",
-    height: "200px",
+    width: "175px",
+    height: "260px",
     marginVertical: 8,
     marginHorizontal: 4,
+    
   },
     title: {
         fontSize: 32,

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-function DetailsScreen ( {navigation} ) {
+function DetailsScreen ( {} ) {
 
   return (
     <View style={styles.mainContainer}>

@@ -16,10 +16,4 @@ function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  mainContainer: {
-    backgroundColor: '#fff',
-  },
-});
-
 export default App;

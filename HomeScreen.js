@@ -8,7 +8,7 @@ function HomeScreen ( {navigation} ) {
     return (
       <View style={styles.mainContainer}>
         <StatusBar style="auto" />
-        <Text>Hello at the first screen</Text>
+        <Text style={styles.title}>Top Rated Movies</Text>
         {FatList(navigation)}
       </View>
     );
@@ -16,7 +16,13 @@ function HomeScreen ( {navigation} ) {
 
   const styles = StyleSheet.create({
     mainContainer: {
+      alignItems: 'center',
       backgroundColor: '#fff',
+
+    },
+    title: {
+      fontSize: 32,
+      fontWeight: "bold",
     },
   });
 

@@ -21,13 +21,15 @@ function DetailsScreen ( {route} ) {
   return (
     <View style={styles.mainContainer}>
       <Text style={styles.title}>{data.title}</Text>
+      {/* <Text style={styles.text}>{'Production: ' + data.production_companies}</Text> */}
       <Text style={styles.text}>{'Release date: ' + data.release_date}</Text>
-      <Image style={styles.image} source={{ uri: `https://image.tmdb.org/t/p/original${data.poster_path}`,}}/>
-      <Text style={styles.overview}>{data.overview}</Text>
+      <Text style={styles.text}>{'Runtime: ' + data.runtime + 'min.'}</Text>
       <Text style={styles.text}>{'Vote average: ' + data.vote_average}</Text>
       <Text style={styles.text}>{'Vote count: ' + data.vote_count}</Text>
       <Text style={styles.text}>{'Language: ' + data.original_language}</Text>
-      <Text style={styles.text}>{'Budget: ' + data.budget + '$'}</Text>
+      <Image style={styles.image} source={{ uri: `https://image.tmdb.org/t/p/original${data.poster_path}`,}}/>
+      <Text style={styles.overview}>{data.overview}</Text>
+      {/* <Text style={styles.text}>{'Available languages: ' + data.spoken_languages}</Text> */}
       
     </View>
   );
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
     },
     text: {
-      fontSize: 22,
+      fontSize: 20,
     },
     overview: {
       fontSize: 18,

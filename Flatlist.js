@@ -6,8 +6,8 @@ function App ( {category} ) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-      for (let i = 1; i <= 5; i++) {
-        fetchMovies(i);
+      for (let i = 1; i <= 10; i++) {
+        setTimeout(fetchMovies(i), 300); // To not overwhelm the API
       }
     }, []);
 

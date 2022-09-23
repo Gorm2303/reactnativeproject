@@ -2,12 +2,12 @@ import { StyleSheet, View, Text } from "react-native-web";
 import FatList from './Flatlist'
 
 
-function Category ( {navigation, route} ) {
+function Category ( {route} ) {
   const { category, title } = route.params;
     return (
         <View style={styles.mainContainer}>
             <Text style={styles.title}>{title}</Text>
-            {FatList({navigation, category})}
+            {FatList({category})}
         </View>
     );
 }

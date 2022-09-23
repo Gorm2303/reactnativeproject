@@ -6,7 +6,7 @@ function App ( {category} ) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-      for (let i = 1; i <= 10; i++) {
+      for (let i = 1; i <= 5; i++) {
         fetchMovies(i);
       }
     }, []);

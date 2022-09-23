@@ -1,4 +1,4 @@
-import { StyleSheet, View, FlatList, Text, Image, TouchableOpacity} from "react-native";
+import { StyleSheet, View, FlatList, Image, TouchableOpacity} from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from '@react-navigation/native';
 
@@ -6,14 +6,15 @@ function App ( {category} ) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetchMovies();
+      for (let i = 1; i <= 10; i++) {
+        fetchMovies(i);
+      }
     }, []);
 
-    function fetchMovies() {
-      console.log(category);
-        fetch(`https://api.themoviedb.org/3/movie/${category.cat}?api_key=0c2928a0d441bf2ce59630be504699c4&language=en-US&page=1`)
+    function fetchMovies(page) {
+        fetch(`https://api.themoviedb.org/3/movie/${category.cat}?api_key=0c2928a0d441bf2ce59630be504699c4&language=en-US&page=${page}`)
         .then((response) => response.json())
-        .then((data) => setData(data.results));
+        .then((data) => setData(current => [...current, ...data.results]));
     }
     const navigation = useNavigation();
 
@@ -22,7 +23,7 @@ function App ( {category} ) {
       <FlatList
       data={data}
       renderItem={({item}) => 
-      <TouchableOpacity onPress={() => navigation.navigate("Details")} style={styles.imgContainer}>
+      <TouchableOpacity onPress={() => navigation.navigate("Details", {movie_id: item.id})} style={styles.imgContainer}>
         <Image 
         style={styles.image} 
         source={{ uri: `https://image.tmdb.org/t/p/original${item.poster_path}`,}}
@@ -41,8 +42,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     
-  },
-  imgContainer: {
   },
   image: {
     width: "175px",

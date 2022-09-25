@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 
 function DetailsScreen ( {route} ) {
   const { movie_id } = route.params;
-  console.log(movie_id);
 
   const [data, setData] = useState([]);
 
